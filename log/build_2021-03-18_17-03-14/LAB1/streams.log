@@ -1,0 +1,37 @@
+[0.368s] Invoking command in '/home/student/dev_ws/src/kozubek_michalczewski/src/LAB1': PYTHONPATH=/home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/LAB1 build --build-base /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build install --prefix /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1 --record /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/install.log --single-version-externally-managed
+[0.756s] running egg_info
+[0.757s] creating ../../build/LAB1/LAB1.egg-info
+[0.757s] writing ../../build/LAB1/LAB1.egg-info/PKG-INFO
+[0.757s] writing dependency_links to ../../build/LAB1/LAB1.egg-info/dependency_links.txt
+[0.757s] writing entry points to ../../build/LAB1/LAB1.egg-info/entry_points.txt
+[0.758s] writing requirements to ../../build/LAB1/LAB1.egg-info/requires.txt
+[0.758s] writing top-level names to ../../build/LAB1/LAB1.egg-info/top_level.txt
+[0.760s] writing manifest file '../../build/LAB1/LAB1.egg-info/SOURCES.txt'
+[0.817s] reading manifest file '../../build/LAB1/LAB1.egg-info/SOURCES.txt'
+[0.819s] writing manifest file '../../build/LAB1/LAB1.egg-info/SOURCES.txt'
+[0.819s] running build
+[0.819s] running build_py
+[0.819s] creating /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build
+[0.819s] creating /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib
+[0.820s] creating /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib/LAB1
+[0.820s] copying LAB1/__init__.py -> /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib/LAB1
+[0.820s] copying LAB1/node.py -> /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib/LAB1
+[0.820s] running install
+[0.820s] running install_lib
+[0.822s] creating /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1
+[0.822s] copying /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib/LAB1/__init__.py -> /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1
+[0.822s] copying /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build/lib/LAB1/node.py -> /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1
+[0.822s] byte-compiling /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1/__init__.py to __init__.cpython-38.pyc
+[0.824s] byte-compiling /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1/node.py to node.cpython-38.pyc
+[0.824s] running install_data
+[0.825s] creating /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/share/ament_index
+[0.825s] creating /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/share/ament_index/resource_index
+[0.825s] creating /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/share/ament_index/resource_index/packages
+[0.825s] copying resource/LAB1 -> /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/share/ament_index/resource_index/packages
+[0.825s] copying package.xml -> /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/share/LAB1
+[0.825s] running install_egg_info
+[0.827s] Copying ../../build/LAB1/LAB1.egg-info to /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages/LAB1-0.0.0-py3.8.egg-info
+[0.828s] running install_scripts
+[0.851s] Installing node script to /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/LAB1
+[0.851s] writing list of installed files to '/home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/install.log'
+[0.874s] Invoked command in '/home/student/dev_ws/src/kozubek_michalczewski/src/LAB1' returned '0': PYTHONPATH=/home/student/dev_ws/src/kozubek_michalczewski/install/LAB1/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/LAB1 build --build-base /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/build install --prefix /home/student/dev_ws/src/kozubek_michalczewski/install/LAB1 --record /home/student/dev_ws/src/kozubek_michalczewski/build/LAB1/install.log --single-version-externally-managed
