@@ -5,8 +5,6 @@ from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 
-from curtsies import Input
-
 import tty
 import sys
 import termios
@@ -27,15 +25,16 @@ class MinimalPublisherSubscriber(Node):
             self.listener_callback,
             10)
 
-        timer_period = 1 # seconds
-        self.timer = self.create_timer(timer_period, self.read_input)
+        timer_period = 0.1 # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
         self.subscription
         self.declare_parameter('foward_key', 'w')
         self.declare_parameter('backward_key', 's')
         self.declare_parameter('left_key', 'a')
         self.declare_parameter('right_key', 'd')
+        self.i = 0
         self.x = 0
-        print('Press \'' + self.get_parameter('foward_key').get_parameter_value().string_value + '\' to move fowrd, \'' + self.get_parameter('backward_key').get_parameter_value().string_value + '\' to move backward, and press \'' + self.get_parameter('left_key').get_parameter_value().string_value + '\' and \'' + self.get_parameter('right_key').get_parameter_value().string_value + '\' to move left and right')
+        self.get_logger().info('Press ' + self.get_parameter('foward_key').get_parameter_value().string_value + ' to move fowrd, ' + self.get_parameter('backward_key').get_parameter_value().string_value + ' to move backward, ' + self.get_parameter('left_key').get_parameter_value().string_value + ', ' + self.get_parameter('right_key').get_parameter_value().string_value + 'to move left and right')
         #bashCommand = "stty -echo"
         #process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         #output, error = process.communicate()
@@ -44,25 +43,6 @@ class MinimalPublisherSubscriber(Node):
         #self.get_logger().info(f'I heard: x = {pose.x}, y = {pose.y} ')
         pass
 
-    # def read_input(self):
-    #     orig_settings = termios.tcgetattr(sys.stdin)
-    #
-    #     tty.setcbreak(sys.stdin)
-    #     x = 0
-    #     while x != chr(27):  # ESC
-    #         x = sys.stdin.read(1)[0]
-    #         print("You pressed", x)
-    #
-    #     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
-
-
-    def read_input(self):
-        with Input(keynames='curses') as input_generator:
-            for e in input_generator:
-                self.x=e
-                self.timer_callback()
-                tty.setcbreak
-
     def timer_callback(self):
         vel_msg = Twist()
         foward_key = self.get_parameter('foward_key').get_parameter_value().string_value
@@ -70,13 +50,12 @@ class MinimalPublisherSubscriber(Node):
         left_key = self.get_parameter('left_key').get_parameter_value().string_value
         right_key = self.get_parameter('right_key').get_parameter_value().string_value
 
-        #orig_settings = termios.tcgetattr(sys.stdin)
-        #tty.setcbreak(sys.stdin)
-        #self.x = sys.stdin.read(1)[0]
+        orig_settings = termios.tcgetattr(sys.stdin)
+        tty.setcbreak(sys.stdin)
+        self.x = sys.stdin.read(1)[0]
         #print("You pressed", self.x)
 
-        #termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
-
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
 
         vel_msg.linear.x = 0.0
         vel_msg.linear.y = 0.0
@@ -96,14 +75,12 @@ class MinimalPublisherSubscriber(Node):
             vel_msg.angular.z = -1.0
         self.publisher_.publish(vel_msg)
         #self.get_logger().info(f'Publishing: velocity: {vel_msg.linear}')
+        self.i += 2
 
 
 
 
 def main(args=None):
-    #settings = saveTerminalSettings()
-    global Settings
-    Settings = termios.tcgetattr(sys.stdin)
     rclpy.init(args=args)
 
     minimal_publisher = MinimalPublisherSubscriber()
