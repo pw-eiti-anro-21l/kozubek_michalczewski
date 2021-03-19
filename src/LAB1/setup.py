@@ -21,6 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'node = LAB1.node:main'
+            #'talker = py_pubsub.publisher_member_function:main',
+            #'listener = py_pubsub.subscriber_member_function:main',
         ],
     },
 )
