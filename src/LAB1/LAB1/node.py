@@ -20,23 +20,29 @@ class MinimalPublisherSubscriber(Node):
         timer_period = 1 # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.subscription
-
+        self.declare_parameter('my_parameter', 'w')
         self.i = 0
 
     def listener_callback(self, pose):
-        self.get_logger().info('I heard: x')
+        self.get_logger().info(f'I heard: x = {pose.x}, y = {pose.y} ')
 
     def timer_callback(self):
         vel_msg = Twist()
-        vel_msg.linear.x = -1.0
+        my_param = self.get_parameter('my_parameter').get_parameter_value().string_value
+        vel_msg.linear.x = 0.0
         vel_msg.linear.y = 0.0
         vel_msg.linear.z = 0.0
         vel_msg.angular.x = 0.0
         vel_msg.angular.y = 0.0
         vel_msg.angular.z = 0.0
+
+        if my_param == 'w':
+            vel_msg.linear.x = 1.0
+        if my_param == 's':
+            vel_msg.linear.x = -1.0
         self.publisher_.publish(vel_msg)
         self.get_logger().info(f'Publishing: velocity: {vel_msg.linear}')
-        self.i += 1
+        self.i += 2
 
 
 
