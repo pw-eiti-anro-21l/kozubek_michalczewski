@@ -20,7 +20,10 @@ class MinimalPublisherSubscriber(Node):
         timer_period = 1 # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.subscription
-        self.declare_parameter('my_parameter', 'w')
+        self.declare_parameter('foward_key', 'w')
+        self.declare_parameter('backward_key', 's')
+        self.declare_parameter('left_key', 'a')
+        self.declare_parameter('right_key', 'd')
         self.i = 0
 
     def listener_callback(self, pose):
@@ -28,7 +31,11 @@ class MinimalPublisherSubscriber(Node):
 
     def timer_callback(self):
         vel_msg = Twist()
-        my_param = self.get_parameter('my_parameter').get_parameter_value().string_value
+        foward_key = self.get_parameter('foward_key').get_parameter_value().string_value
+        backward_key = self.get_parameter('backward_key').get_parameter_value().string_value
+        left_key = self.get_parameter('left_key').get_parameter_value().string_value
+        right_key = self.get_parameter('right_key').get_parameter_value().string_value
+        pressed_key =""
         vel_msg.linear.x = 0.0
         vel_msg.linear.y = 0.0
         vel_msg.linear.z = 0.0
@@ -36,10 +43,14 @@ class MinimalPublisherSubscriber(Node):
         vel_msg.angular.y = 0.0
         vel_msg.angular.z = 0.0
 
-        if my_param == 'w':
+        if pressed_key == foward_key:
             vel_msg.linear.x = 1.0
-        if my_param == 's':
+        if pressed_key == backward_key:
             vel_msg.linear.x = -1.0
+        if pressed_key == left_key:
+            vel_msg.angular.z = 1.0
+        if pressed_key == right_key:
+            vel_msg.angular.z = -1.0
         self.publisher_.publish(vel_msg)
         self.get_logger().info(f'Publishing: velocity: {vel_msg.linear}')
         self.i += 2
