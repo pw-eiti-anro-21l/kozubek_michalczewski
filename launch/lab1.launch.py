@@ -1,6 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+
 def generate_launch_description():
     return LaunchDescription([
         Node(
@@ -13,15 +14,13 @@ def generate_launch_description():
             prefix='gnome-terminal --',
             executable='node',
             output='screen',
-            name='control',
             parameters=[
-                {'forward_key': 'i'},
-                {'backward_key': 'k'},
-                {'left_key': 'j'},
-                {'right_key': 'l'}
+                {'forward_key': 't'},
+                {'backward_key': 'g'},
+                {'left_key': 'f'},
+                {'right_key': 'h'}
             ]
 
-
         )
- 
+
     ])

@@ -29,7 +29,7 @@ class MinimalPublisherSubscriber(Node):
     def read_input(self):
         with Input(keynames='curses') as input_generator:
             for e in input_generator:
-                self.x = e
+                self.x=e
                 self.timer_callback()
                 tty.setcbreak
 
@@ -59,7 +59,6 @@ class MinimalPublisherSubscriber(Node):
 
 
 def main(args=None):
-    # settings = saveTerminalSettings()
     global Settings
     Settings = termios.tcgetattr(sys.stdin)
     rclpy.init(args=args)
