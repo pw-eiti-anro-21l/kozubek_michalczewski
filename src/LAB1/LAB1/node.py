@@ -29,7 +29,7 @@ class MinimalPublisherSubscriber(Node):
     def read_input(self):
         with Input(keynames='curses') as input_generator:
             for e in input_generator:
-                self.x=e
+                self.x = e
                 self.timer_callback()
                 tty.setcbreak
 
