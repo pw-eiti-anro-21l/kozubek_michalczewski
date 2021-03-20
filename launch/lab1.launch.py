@@ -5,7 +5,6 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='turtlesim',
-            namespace='turtlesim1',
             executable='turtlesim_node',
             name='sim'
         ),
@@ -13,8 +12,13 @@ def generate_launch_description():
             package='LAB1',
             prefix='gnome-terminal --',
             executable='node',
-            name='node_name',
             output='screen',
+            parameters=[
+                {'foward_key': 't'},
+                {'backward_key': 'g'},
+                {'left_key': 'f'},
+                {'right_key': 'h'}
+            ]
 
 
         )
