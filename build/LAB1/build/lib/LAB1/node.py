@@ -3,7 +3,7 @@ from rclpy.node import Node
 
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
-from turtlesim.msg import Pose #czy potrzebujemy czytać pozycje i subskrybować topic pose??
+from turtlesim.msg import Pose
 
 from curtsies import Input
 
