@@ -47,6 +47,10 @@ Aby zmienić klawisze sterowania na inne należy wewnątrz pliku **lab1.launch.p
 
 tak aby odpowiadał naszym preferencją.
 
+### 4. Pliki
+
+* __node.py__ - plik z implementacją
+
 
 
 ###Członkowie zespołu:
