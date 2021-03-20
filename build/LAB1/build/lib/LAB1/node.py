@@ -30,12 +30,12 @@ class MinimalPublisherSubscriber(Node):
         timer_period = 1 # seconds
         self.timer = self.create_timer(timer_period, self.read_input)
         self.subscription
-        self.declare_parameter('foward_key', 'w')
+        self.declare_parameter('forward_key', 'w')
         self.declare_parameter('backward_key', 's')
         self.declare_parameter('left_key', 'a')
         self.declare_parameter('right_key', 'd')
         self.x = 0
-        print('Press \'' + self.get_parameter('foward_key').get_parameter_value().string_value + '\' to move fowrd, \'' + self.get_parameter('backward_key').get_parameter_value().string_value + '\' to move backward, and press \'' + self.get_parameter('left_key').get_parameter_value().string_value + '\' and \'' + self.get_parameter('right_key').get_parameter_value().string_value + '\' to move left and right')
+        print('Press \'' + self.get_parameter('forward_key').get_parameter_value().string_value + '\' to move forward, \'' + self.get_parameter('backward_key').get_parameter_value().string_value + '\' to move backward, and press \'' + self.get_parameter('left_key').get_parameter_value().string_value + '\' and \'' + self.get_parameter('right_key').get_parameter_value().string_value + '\' to move left and right')
         #bashCommand = "stty -echo"
         #process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         #output, error = process.communicate()
@@ -65,7 +65,7 @@ class MinimalPublisherSubscriber(Node):
 
     def timer_callback(self):
         vel_msg = Twist()
-        foward_key = self.get_parameter('foward_key').get_parameter_value().string_value
+        foward_key = self.get_parameter('forward_key').get_parameter_value().string_value
         backward_key = self.get_parameter('backward_key').get_parameter_value().string_value
         left_key = self.get_parameter('left_key').get_parameter_value().string_value
         right_key = self.get_parameter('right_key').get_parameter_value().string_value
