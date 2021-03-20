@@ -10,12 +10,22 @@ wybierane poprzez parametry.
 
 ### 2. Implementacja
 
-Główny sposób działania opiera się na nodzie **node.py** który zczytywał wciśnięte klawisze przy pomocy konsoli, 
-a następnie przy pomocy topica **turtle1/cmd_vel** publikował nową prędkość.
+Główny sposób działania pakietu opiera się na nodzie **pubsub** który zczytywał wciśnięte klawisze przy pomocy konsoli, 
+a następnie przy pomocy topica **turtle1/cmd_vel** publikował nową prędkość do noda **sim** który to odpowiednio ruszał się żółwiem.
 
-'''puml
-A->B
-'''
+graph TD;
+    pubsub-->turtle1/cmd_vel;
+    turtle1/cmd_vel-->sim;
+
+Przy pomocy parametów:
+* forward_key,
+* backward_key,
+* left_key,
+* right_key,
+została dodana możliwość zmiany klawiszy do sterowania żółwia.
+
+### 3. Uruchomienie
+
 
 
 Członkowie zespołu:
