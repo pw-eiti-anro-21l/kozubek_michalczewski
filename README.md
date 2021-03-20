@@ -39,8 +39,6 @@ tak aby odpowiadał naszym preferencją
 
 
 
-###**Członkowie zespołu:**
+###Członkowie zespołu:
 
-Hubert Kozubek,
-
-Przemysław Michalczewski
+Hubert Kozubek, Przemysław Michalczewski
