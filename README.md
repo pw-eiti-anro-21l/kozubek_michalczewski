@@ -48,7 +48,9 @@ tak aby odpowiadał naszym preferencją.
 
 ### 4. Pliki
 
-* __node.py__ - plik z implementacją
+* __node.py__ - plik z implementacją publishera odpowiedzialnego za publikowanie nowej prędkości
+
+* __lab1.launch.py__ - plik inicujący odpowiednie nody, potrzebne do realizacji zadania
 
 
 
