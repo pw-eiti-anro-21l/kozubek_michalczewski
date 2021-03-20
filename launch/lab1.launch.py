@@ -13,11 +13,12 @@ def generate_launch_description():
             prefix='gnome-terminal --',
             executable='node',
             output='screen',
+            name='control',
             parameters=[
-                {'foward_key': 't'},
-                {'backward_key': 'g'},
-                {'left_key': 'f'},
-                {'right_key': 'h'}
+                {'forward_key': 'i'},
+                {'backward_key': 'k'},
+                {'left_key': 'j'},
+                {'right_key': 'l'}
             ]
 
 
