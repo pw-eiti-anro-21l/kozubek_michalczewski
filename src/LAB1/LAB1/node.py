@@ -5,6 +5,8 @@ from geometry_msgs.msg import Twist
 
 from curtsies import Input
 
+import tty
+
 
 class MinimalPublisherSubscriber(Node):
 
