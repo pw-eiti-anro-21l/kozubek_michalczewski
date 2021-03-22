@@ -13,7 +13,7 @@ wybierane poprzez parametry.
 Główny sposób działania pakietu opiera się na nodzie **pubsub**, który zczytywał wciśnięte klawisze poprzez konsolę, 
 a następnie przy pomocy topica **turtle1/cmd_vel** publikował nową prędkość do **turtlesim_node**, który to odpowiednio ruszał się żółwiem.
 
-Przy pomocy parametów:
+Przy pomocy parametrów:
 * forward_key,
 * backward_key,
 * left_key,
