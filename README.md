@@ -36,21 +36,21 @@ Ostatecznie powiązanie pomiędzy węzłami wygląda jak na powyższym rysunku. 
 
 Najpierw należy stworzyć odpowiedni plik .urdf. Następnie umieścić go w pakiecie. Następnie budujemy nasz pakiet przy użyciu komendy:
 
-'colcon build --symlink-install --packages-select urdf_tutorial'
+`colcon build --symlink-install --packages-select urdf_tutorial`
 
 Kolejno należy użyć komendy określajcej źródło:
 
-'source install/setup.bash'
+`source install/setup.bash`
 
 Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejnych węzłów naszej symulacji:
 
-'ros2 launch urdf_tutorial demo.launch.py'
+`ros2 launch urdf_tutorial demo.launch.py`
 
 Plik _launch_ uruchomi węzeł _state_publisher_.
 
 W kolejnej konsoli wpisujemy komędę określającą źródło (wyżej podana), a następnie uruchomić kolejny plik launch:
 
-'ros2 launch urdf_tutorial demo.launch.py'
+`ros2 launch urdf_tutorial demo.launch.py`
 
 Uruchomi on program RVIZ. W zależności od tego jaki program użyjemy do stworzenia pliku .urdf robot będzie się poruszał lub będzie statyczny.
 
