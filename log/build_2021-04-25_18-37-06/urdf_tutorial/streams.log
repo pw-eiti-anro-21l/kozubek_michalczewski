@@ -1,0 +1,25 @@
+[0.364s] Invoking command in '/home/student/Desktop/final/build/urdf_tutorial': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/student/Desktop/final/install/urdf_tutorial --uninstall --editable --build-directory /home/student/Desktop/final/build/urdf_tutorial/build
+[0.683s] running develop
+[0.881s] Invoked command in '/home/student/Desktop/final/build/urdf_tutorial' returned '0': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/student/Desktop/final/install/urdf_tutorial --uninstall --editable --build-directory /home/student/Desktop/final/build/urdf_tutorial/build
+[0.882s] Invoking command in '/home/student/Desktop/final/urdf_tutorial': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/urdf_tutorial build --build-base /home/student/Desktop/final/build/urdf_tutorial/build install --prefix /home/student/Desktop/final/install/urdf_tutorial --record /home/student/Desktop/final/build/urdf_tutorial/install.log --single-version-externally-managed
+[1.156s] running egg_info
+[1.157s] writing ../build/urdf_tutorial/urdf_tutorial.egg-info/PKG-INFO
+[1.157s] writing dependency_links to ../build/urdf_tutorial/urdf_tutorial.egg-info/dependency_links.txt
+[1.158s] writing entry points to ../build/urdf_tutorial/urdf_tutorial.egg-info/entry_points.txt
+[1.158s] writing requirements to ../build/urdf_tutorial/urdf_tutorial.egg-info/requires.txt
+[1.159s] writing top-level names to ../build/urdf_tutorial/urdf_tutorial.egg-info/top_level.txt
+[1.225s] reading manifest file '../build/urdf_tutorial/urdf_tutorial.egg-info/SOURCES.txt'
+[1.227s] writing manifest file '../build/urdf_tutorial/urdf_tutorial.egg-info/SOURCES.txt'
+[1.227s] running build
+[1.227s] running build_py
+[1.228s] running install
+[1.229s] running install_lib
+[1.231s] running install_data
+[1.232s] copying urdf/r2d2.urdf.xml -> /home/student/Desktop/final/install/urdf_tutorial/share/urdf_tutorial
+[1.232s] running install_egg_info
+[1.235s] removing '/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages/urdf_tutorial-0.0.0-py3.8.egg-info' (and everything under it)
+[1.235s] Copying ../build/urdf_tutorial/urdf_tutorial.egg-info to /home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages/urdf_tutorial-0.0.0-py3.8.egg-info
+[1.237s] running install_scripts
+[1.261s] Installing state_publisher script to /home/student/Desktop/final/install/urdf_tutorial/lib/urdf_tutorial
+[1.263s] writing list of installed files to '/home/student/Desktop/final/build/urdf_tutorial/install.log'
+[1.285s] Invoked command in '/home/student/Desktop/final/urdf_tutorial' returned '0': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/urdf_tutorial build --build-base /home/student/Desktop/final/build/urdf_tutorial/build install --prefix /home/student/Desktop/final/install/urdf_tutorial --record /home/student/Desktop/final/build/urdf_tutorial/install.log --single-version-externally-managed

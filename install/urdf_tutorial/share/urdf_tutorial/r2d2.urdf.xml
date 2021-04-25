@@ -14,12 +14,12 @@
 				<color rgba="1 0 0 1"/>
 			</material>
 			<geometry>
-				 <box size="2.0 .05 .05"/>
+				 <box size="1.0 .05 .05"/>
 			</geometry>
 		</visual>
 	</link>
-	<joint name="q1" type="revolute">
-       <limit upper="3.1415" lower="0" effort="10" velocity="10"/>
+	<joint name="q1" type="fixed">
+       <limit upper="2.1415" lower="0" effort="10" velocity="10"/>
 		 <origin xyz="0 0 0" rpy="0 0 0.5235987755982988"/>
 		<parent link="link0_passive"/>
 		<child link="link1"/>
@@ -42,7 +42,7 @@
 		</visual>
 	</link>
 	<joint name="q1_x" type="fixed">
-		<origin xyz="1.0 0 0" rpy="0 1.571 0"/>
+		<origin xyz="0.5 0 0" rpy="0 1.571 0"/>
 		<parent link="link1_passive"/>
 		<child link="link1_x_axis"/>
 	</joint>
@@ -57,7 +57,7 @@
 		</visual>
 	</link>
 	<joint name="q2" type="fixed">
-		 <origin xyz="2.0 0 0" rpy="0 0 0"/>
+		 <origin xyz="1.0 0 0" rpy="0 0 0"/>
 		<parent link="link1_passive"/>
 		<child link="link2"/>
 		<axis xyz="0 0 1"/>
@@ -70,18 +70,18 @@
 	</joint>
 	<link name="link2_passive">
 		<visual>
-			 <origin xyz="0 0 4.0" rpy="0 0 0"/>
+			 <origin xyz="0 0 2.0" rpy="0 0 0"/>
 			<material name="blue">
  				<color rgba="0 0 .8 1"/>
  			</material>
 			<geometry>
-				 <box size=".05 .05 8.0 "/>
+				 <box size=".05 .05 4.0 "/>
 			</geometry>
 		</visual>
 	</link>
-	<joint name="q2_x" type="revolute">
+	<joint name="q2_x" type="fixed">
        <limit upper="3.1415" lower="0" effort="10" velocity="10" />
-		 <origin xyz="0 0 8.0" rpy="0 1.571 0"/>
+		 <origin xyz="0 0 4.0" rpy="0 1.571 0"/>
 		<parent link="link2_passive"/>
 		<child link="link2_x_axis"/>
 	</joint>
@@ -103,7 +103,7 @@
 		<child link="link3"/>
 		<axis xyz="0 0 1"/>
 	</joint>
-	<joint name="q3_passive" type="prismatic">
+	<joint name="q3_passive" type="fixed">
        <limit effort="10" velocity="10" />
 		 <origin xyz="0 0 0" rpy="0 0 0"/>
 		<parent link="link3"/>
@@ -111,16 +111,16 @@
 	</joint>
 	<link name="link3_passive">
 		<visual>
-			 <origin xyz="0 0 2.0" rpy="0 0 0"/>
+			 <origin xyz="0 0 1.0" rpy="0 0 0"/>
 			<material name="red"/>
 			<geometry>
-				 <box size=".05 .05 4.0 "/>
+				 <box size=".05 .05 2.0 "/>
 			</geometry>
 		</visual>
 	</link>
-	<joint name="q3_x" type="prismatic">
+	<joint name="q3_x" type="fixed">
        <limit effort="10" velocity="10" />
-		 <origin xyz="0 0 4.0" rpy="0 1.571 0"/>
+		 <origin xyz="0 0 2.0" rpy="0 1.571 0"/>
 		<parent link="link3_passive"/>
 		<child link="link3_x_axis"/>
 	</joint>
