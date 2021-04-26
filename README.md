@@ -50,7 +50,7 @@ Plik _launch_ uruchomi węzeł _state_publisher_.
 
 W kolejnej konsoli wpisujemy komędę określającą źródło (wyżej podana), a następnie uruchomić kolejny plik launch:
 
-`ros2 launch urdf_tutorial demo.launch.py`
+`ros2 launch urdf_tutorial rviz.launch.py`
 
 Uruchomi on program RVIZ. W zależności od tego jaki program użyjemy do stworzenia pliku .urdf robot będzie się poruszał lub będzie statyczny.
 
