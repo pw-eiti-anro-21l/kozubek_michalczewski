@@ -2,29 +2,20 @@
 
 ### 1. Wprowadzenie
 
-Celem projektu było stworzenie własnego pakietu **ros2**, który będzie umożliwiał wizualizację robota w programie RVIZ oraz stworzenie węzła (_state_publisher_) sterującego nim. 
+Celem projektu było stworzenie własnego pakietu **ros2**, ktrego gwnym celem byla obsluga kinematyki proset
 
 
 ### 2. Implementacja
-Stworzono dwa programy _DH to URDF.py_ and _DH to URDF.static.py_, które odpowiednie generują pliki .urdf dla zadanych parametrów robota odpowiednio porusziącego się i statycznego.
+Stworzono dwa programy _non_kdl_dkin.py_ i _non_kdl_dkin.py_, odpowiaday one za wyliczenia kinematyki prosej odpowiedni bez uycia PyKDL oraz z uyciem PyKDL
 
-Wywołanie przykładowe programów:
-          
-_python3 DH\ to\ URDF.py 30 60 1 2 4_
-gdzie kolejne argumenty odpowiadają:
-* kąt theta1 - kąt w stawie robota
-* kąt theta2 - kolejny kąt w stawie robota
-* a1 - długość pierwszego ramienia
-* a2 - długość drugiego ramienia
-* d1 - przesunięcie stawu
+Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py ktory to odpowiadal za nadawanie nowych pozycji elementa oraz weryfikacje czy nie osiagnely one pozycji zabronionych
 
-Po wykonaniu programu utworzony jest plik _r2d2.urdf.xml_, który należy umieścić w miejsce starego pliku w celu uaktualnienie robota.
 
-Następnie napisany został węzeł _state_publisher_ , który odpowiada za poruszanie się robota poprzez subskrybcję węzła _robot_state_publisher_.
-
-Zostały stworzone dwa pliki _launch_:
-* demo.launch.py - uruchami węzły określające i poruszające robotem
-* rviz.launch.py - odpala program wizualizacyjny RVIZ
+Zostały stworzone cztery pliki _launch_:
+* non_kdl_dkin.launch.py
+* kdl_dkin.launch.py
+* both_kdl_and_non_kdl_dkin.launch.py
+* rviz.launch.py - odpala program wizualizacyjny
 
 
 ![Alt text](rqt_graph.png?raw=true "RQT - graph")

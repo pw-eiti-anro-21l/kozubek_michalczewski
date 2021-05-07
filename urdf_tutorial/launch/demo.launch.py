@@ -15,6 +15,10 @@ def generate_launch_description():
         urdf_file_name)
     with open(urdf, 'r') as infp:
         robot_desc = infp.read()
+        
+    poz1 = 0.0
+    poz2 = 0.0
+    poz3 = 0.0
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -32,5 +36,11 @@ def generate_launch_description():
             package='urdf_tutorial',
             executable='state_publisher',
             name='state_publisher',
+            parameters=[{
+                'poz1': poz1,
+                'poz2': poz2,
+                'poz3': poz3,
+                'use_sim_time': use_sim_time,
+            }],
             output='screen'),
     ])

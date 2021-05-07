@@ -24,17 +24,25 @@ class StatePublisher(Node):
         tinc = degree
         rot_speed = 0.01
 
-        q1=0.0
-        q2_passive=0.0
-        q2_x=0.0
-        q3_passive=0.0
-        q3_x=0.0
+        self.declare_parameter('poz1', 0.0)
+        self.declare_parameter('poz2', 0.0)
+        self.declare_parameter('poz3', 0.0)
+
+        self.poz1 = self.get_parameter('poz1').get_parameter_value().double_value
+        self.poz2 = self.get_parameter('poz2').get_parameter_value().double_value
+        self.poz3 = self.get_parameter('poz3').get_parameter_value().double_value
 
 
+        base_to_second=0.0
+        second_to_third=0.0
+        linear_joint=0.0
+        self.timer = self.create_timer(0.2, self.update_state)
+
+    def update_state(self):
         # message declarations
         odom_trans = TransformStamped()
         odom_trans.header.frame_id = 'odom'
-        odom_trans.child_frame_id = 'link0_passive'
+        odom_trans.child_frame_id = 'base_link'
         joint_state = JointState()
 
         try:
@@ -44,8 +52,15 @@ class StatePublisher(Node):
 
                 now = self.get_clock().now()
                 joint_state.header.stamp = now.to_msg()
-                joint_state.name = ['q1', 'q2_passive', 'q2_x', 'q3_passive', 'q3_x']
-                joint_state.position = [q1, q2_passive, q2_x, q3_passive, q3_x]
+                joint_state.name = ['base_to_second', 'second_to_third', 'linear_joint']
+                joint_state.position = [self.poz1, self.poz2, self.poz3]
+
+                if self.poz1 < self.get_parameter('poz1').get_parameter_value().double_value:
+                    self.poz1 += 0.05
+                if self.poz1 > self.get_parameter('poz1').get_parameter_value().double_value:
+                    self.poz1 -= 0.05
+
+                self.poz1 = min(max(-3.14,self.poz1),3.14)
 
                 odom_trans.header.stamp = now.to_msg()
                 self.joint_pub.publish(joint_state)
@@ -53,19 +68,11 @@ class StatePublisher(Node):
 
 
 
-                q1+=rot_speed
-                q2_x-=2*rot_speed
-
-
-
-
-                loop_rate.sleep()
-
         except KeyboardInterrupt:
             pass
 
 def main():
     node = StatePublisher()
+    rclpy.spin(node)
 
-if __name__ == '__main__':
-    main()
+main()
