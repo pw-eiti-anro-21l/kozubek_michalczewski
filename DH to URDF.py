@@ -5,145 +5,97 @@ import math
 
 theta1 = 0
 theta2 = 0
-a1 = 0
-a2 = 0
 d3 = 0
 
-if len(sys.argv) == 6 :
+if len(sys.argv) == 4 :
     theta1 = float(sys.argv[1])*math.pi/180
     theta2 = float(sys.argv[2])*math.pi/180
-    a1 = float(sys.argv[3])
-    a2 = float(sys.argv[4])
-    d3 = float(sys.argv[5])
+    d3 = float(sys.argv[3])
 
 
 f = open("r2d2.urdf.xml", "w")
-text_list = ['<robot name="r2d2">\n',
-' 	<link name="link0_passive"/>\n',
-'	<link name="link0_x_axis"/>\n',
-'	<joint name="q0_x" type="fixed">\n',
-'		<origin xyz="0 0 0" rpy="0 1.571 0"/>\n',
-'		<parent link="link0_passive"/>\n',
-'		<child link="link0_x_axis"/>\n',
-'	</joint>\n',
-'	<link name="link1"/>\n',
-'	<link name="link1_x_axis">\n',
-'		<visual>\n',
-f'			 <origin xyz="0 0 0" rpy="0 1.571 0"/>\n',
-'			<material name="red">\n',
-'				<color rgba="1 0 0 1"/>\n',
-'			</material>\n',
-'			<geometry>\n',
-f'				 <box size="{a1} .05 .05"/>\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q1" type="revolute">\n',
-'       <limit upper="2.1415" lower="0" effort="10" velocity="10"/>\n',
-f'		 <origin xyz="0 0 0" rpy="0 0 {theta1}"/>\n',
-'		<parent link="link0_passive"/>\n',
-'		<child link="link1"/>\n',
-'		<axis xyz="0 0 1"/>\n',
-'	</joint>\n',
-'	<joint name="q1_passive" type="fixed">\n',
-'		<origin xyz="0 0 0" rpy="0 0 0"/>\n',
-'		<parent link="link1"/>\n',
-'		<child link="link1_passive"/>\n',
-'	</joint>\n',
-'	<link name="link1_passive">\n',
-'		<visual>\n',
-'			<origin xyz="0 0 0.25" rpy="0 0 0"/>\n',
-'			<material name="blue">\n',
-'	       		<color rgba="0 0.8 1 1.0"/>\n',
-'	     	</material>\n',
-'			<geometry>\n',
-'				<cylinder length="0.0" radius="0.0"/>\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q1_x" type="fixed">\n',
-f'		<origin xyz="{a1/2} 0 0" rpy="0 1.571 0"/>\n',
-'		<parent link="link1_passive"/>\n',
-'		<child link="link1_x_axis"/>\n',
-'	</joint>\n',
-'	<link name="link2"/>\n',
-'	<link name="link2_x_axis">\n',
-'		<visual>\n',
-'			<origin xyz="0 0 0" rpy="0 0 0"/>\n',
-'			<material name="red"/>\n',
-'			<geometry>\n',
-'				<cylinder length="0.0" radius="0.0"/>\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q2" type="fixed">\n',
-f'		 <origin xyz="{a1} 0 0" rpy="0 0 0"/>\n',
-'		<parent link="link1_passive"/>\n',
-'		<child link="link2"/>\n',
-'		<axis xyz="0 0 1"/>\n',
-'	</joint>\n',
-'	<joint name="q2_passive" type="fixed">\n',
-'       <limit effort="10" velocity="10" />\n',
-f'		 <origin xyz="0 0 0" rpy="0 0 0"/>\n',
-'		<parent link="link2"/>\n',
-'		<child link="link2_passive"/>\n',
-'	</joint>\n',
-'	<link name="link2_passive">\n',
-'		<visual>\n',
-f'			 <origin xyz="0 0 {d3/2}" rpy="0 0 0"/>\n',
-'			<material name="blue">\n',
-' 				<color rgba="0 0 .8 1"/>\n',
-' 			</material>\n',
-'			<geometry>\n',
-f'				 <box size=".05 .05 {d3} "/>\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q2_x" type="revolute">\n',
-'       <limit upper="3.1415" lower="0" effort="10" velocity="10" />\n',
-f'		 <origin xyz="0 0 {d3}" rpy="0 1.571 0"/>\n',
-'		<parent link="link2_passive"/>\n',
-'		<child link="link2_x_axis"/>\n',
-'	</joint>\n',
-'	<link name="link3"/>\n',
-'	<link name="link3_x_axis">\n',
-'		<visual>\n',
-'			<origin xyz="0 0 0.4" rpy="0 0 0"/>\n',
-'			<material name="white">\n',
-'               <color rgba="1 1 1 1"/>\n',
-'           </material>\n',
-'			<geometry>\n',
-'				<sphere radius=".4" />\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q3" type="fixed">\n',
-f'		 <origin xyz="0 0 0" rpy="{-theta2} 0 0"/>\n',
-'		<parent link="link2_x_axis"/>\n',
-'		<child link="link3"/>\n',
-'		<axis xyz="0 0 1"/>\n',
-'	</joint>\n',
-'	<joint name="q3_passive" type="prismatic">\n',
-'       <limit effort="10" velocity="10" />\n',
-f'		 <origin xyz="0 0 0" rpy="0 0 0"/>\n',
-'		<parent link="link3"/>\n',
-'		<child link="link3_passive"/>\n',
-'	</joint>\n',
-'	<link name="link3_passive">\n',
-'		<visual>\n',
-f'			 <origin xyz="0 0 {a2/2}" rpy="0 0 0"/>\n',
-'			<material name="red"/>\n',
-'			<geometry>\n',
-f'				 <box size=".05 .05 {a2} "/>\n',
-'			</geometry>\n',
-'		</visual>\n',
-'	</link>\n',
-'	<joint name="q3_x" type="prismatic">\n',
-'       <limit effort="10" velocity="10" />\n',
-f'		 <origin xyz="0 0 {a2}" rpy="0 1.571 0"/>\n',
-'		<parent link="link3_passive"/>\n',
-'		<child link="link3_x_axis"/>\n',
-'	</joint>\n',
+text_list = ['<robot name="r2d2">'
+'  <link name="base_link">'
+'    <visual>'
+'      <geometry>'
+'        <box size="0.5 0.5 6"/>'
+'      </geometry>'
+'       <origin rpy="0 0 0" xyz="0 0 3"/>'
+'      <material name="grey">'
+'    <color rgba="0.75 0.75 0.75 1"/>'
+'  	</material>'
+'    </visual>'
+'  </link>'
+'  <link name="second_link">'
+'    <visual>'
+'      <geometry>'
+'        <box size="0.1 0.1 2"/>'
+'      </geometry>'
+'        <material name="red">'
+'    	<color rgba="1 0 0 1"/>'
+'  		</material>'
+'      <origin rpy="0 1.57075 0" xyz="1 0 0"/>'
+'    </visual>'
+'  </link>'
+'<link name="third">'
+'    <visual>'
+'      <geometry>'
+'         <box size="0.1 0.1 4"/>'
+'      </geometry>'
+'      	<material name="white">'
+'    	<color rgba="1 1 1 1"/>'
+'  		</material>'
+'      <origin rpy="0 0 0" xyz="3 0 -2" />'
+'    </visual>'
+'  </link>'
+'  <link name="third_link">'
+'    <visual>'
+'      <geometry>'
+'        <box size="0.1 0.1 3"/>'
+'      </geometry>'
+'        <material name="blue">'
+'    	<color rgba="0 0 0.8 1"/>'
+'  		</material>'
+'      <origin rpy="0 1.57075 0" xyz="1.5 0 0" />'
+'    </visual>'
+'  </link>'
+'  <link name="end_link">'
+'    <visual>'
+'      <geometry>'
+'        <box size="0.1 0.1 0.1"/>'
+'      </geometry>'
+'        <material name="green">'
+'    	<color rgba="0 1 0 1"/>'
+'  		</material>'
+'       <origin rpy="0 0 0" xyz="-0.1 0 0" />'
+'    </visual>'
+'  </link>'
+'  <joint name="base_to_second" type="continuous">'
+'    <parent link="base_link"/>'
+'    <child link="second_link"/>'
+'    <origin xyz="0 0 6"/>'
+'    <axis xyz="0 0 1"/>'
+'  </joint>'
+'  <joint name="second_to_third" type="revolute">'
+'    <limit effort="1000.0" lower="-0.85" upper="0.85" velocity="0.5"/>'
+'    <parent link="second_link"/>'
+'    <child link="third_link"/>'
+'    <origin rpy="0 0 0" xyz="2 0 0" />'
+'    <axis xyz="0 0 1"/>'
+'  </joint>'
+'	<joint name="second" type="fixed">'
+'    <parent link="second_link"/>'
+'    <child link="third"/>'
+'    <origin rpy="0 0 0" xyz="2 0 0" />'
+'    <axis xyz="0 0 1"/>'
+'  </joint>'
+'  <joint name="linear_joint" type="prismatic">'
+'    <parent link="third_link"/>'
+'    <child link="end_link"/>'
+'    <origin rpy="0 3.14 0" xyz="3 0 -0.05" />'
+'    <limit effort="1000.0" lower="0" upper="10" velocity="0.5"/>'
+'    <axis xyz="0 0 1"/>'
+'  </joint>'
 '</robot>']
 f.writelines(text_list)
 f.close()

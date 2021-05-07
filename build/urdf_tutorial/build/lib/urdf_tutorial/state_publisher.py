@@ -21,14 +21,9 @@ class StatePublisher(Node):
         degree = pi / 180.0
         loop_rate = self.create_rate(30)
 
-        # robot state
-        #tilt = 0.0001
         tinc = degree
         rot_speed = 0.01
-        swivel = 0.001
-        angle = 0.
-        height = 0.
-        hinc = 0.005
+
         q1=0.0
         q2_passive=0.0
         q2_x=0.0
@@ -46,34 +41,24 @@ class StatePublisher(Node):
             while rclpy.ok():
                 rclpy.spin_once(self)
 
-                # update joint_state
+
                 now = self.get_clock().now()
                 joint_state.header.stamp = now.to_msg()
                 joint_state.name = ['q1', 'q2_passive', 'q2_x', 'q3_passive', 'q3_x']
                 joint_state.position = [q1, q2_passive, q2_x, q3_passive, q3_x]
 
-                # update transform
-                # (moving in a circle with radius=2)
-
                 odom_trans.header.stamp = now.to_msg()
-                #odom_trans.transform.translation.x = cos(angle)*2
-                #odom_trans.transform.translation.y = sin(angle)*2
-                #odom_trans.transform.translation.z = 0.7
-                #odom_trans.transform.rotation = \
-                #    euler_to_quaternion(0, 0, angle + pi/2) # roll,pitch,yaw
-
-                # send the joint state and transform
                 self.joint_pub.publish(joint_state)
                 self.broadcaster.sendTransform(odom_trans)
 
-                # Create new robot state
+
 
                 q1+=rot_speed
                 q2_x-=2*rot_speed
 
 
 
-                # This will adjust as needed per iteration
+
                 loop_rate.sleep()
 
         except KeyboardInterrupt:
