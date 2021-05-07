@@ -1,0 +1,17 @@
+[0.548s] Invoking command in '/home/student/Desktop/final/build/urdf_tutorial': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/student/Desktop/final/install/urdf_tutorial --editable --build-directory /home/student/Desktop/final/build/urdf_tutorial/build --no-deps install_data --install-dir /home/student/Desktop/final/install/urdf_tutorial
+[1.005s] running develop
+[1.229s] running egg_info
+[1.229s] writing urdf_tutorial.egg-info/PKG-INFO
+[1.230s] writing dependency_links to urdf_tutorial.egg-info/dependency_links.txt
+[1.231s] writing entry points to urdf_tutorial.egg-info/entry_points.txt
+[1.231s] writing requirements to urdf_tutorial.egg-info/requires.txt
+[1.231s] writing top-level names to urdf_tutorial.egg-info/top_level.txt
+[1.311s] reading manifest file 'urdf_tutorial.egg-info/SOURCES.txt'
+[1.313s] writing manifest file 'urdf_tutorial.egg-info/SOURCES.txt'
+[1.421s] running build_ext
+[1.423s] Creating /home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages/urdf-tutorial.egg-link (link to .)
+[1.424s] Installing state_publisher script to /home/student/Desktop/final/install/urdf_tutorial/lib/urdf_tutorial
+[1.426s] 
+[1.426s] Installed /home/student/Desktop/final/build/urdf_tutorial
+[1.426s] running install_data
+[1.483s] Invoked command in '/home/student/Desktop/final/build/urdf_tutorial' returned '0': PYTHONPATH=/home/student/Desktop/final/install/urdf_tutorial/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/student/Desktop/final/install/urdf_tutorial --editable --build-directory /home/student/Desktop/final/build/urdf_tutorial/build --no-deps install_data --install-dir /home/student/Desktop/final/install/urdf_tutorial
