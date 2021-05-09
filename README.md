@@ -2,48 +2,46 @@
 
 ### 1. Wprowadzenie
 
-Celem projektu było stworzenie własnego pakietu **ros2**, ktrego gwnym celem byla obsluga kinematyki proset
+Celem projektu było stworzenie własnego pakietu **ros2**, ktrego gównym celem byla obsluga kinematyki prostej. Pakiet ten miał za zadanie wyliczać pozycje końcówki robota, tak aby zadzała się z jego realnym połorzeniem.
 
 
 ### 2. Implementacja
-Stworzono dwa programy _non_kdl_dkin.py_ i _non_kdl_dkin.py_, odpowiaday one za wyliczenia kinematyki prosej odpowiedni bez uycia PyKDL oraz z uyciem PyKDL
+Stworzono dwa węzły _non_kdl_dkin.py_ i _kdl_dkin.py_, odpowiaday one za wyliczenia pozycji końcówki "ramienia" robota. Jak nazwa wskazuje węzeł _non_kdl_ nie korzystał z dostępnego w pythonie pakiety PyKDL. Natomiast program _kdl_ używał wcześniej wspomnianego pakietu.
 
-Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py ktory to odpowiadal za nadawanie nowych pozycji elementa oraz weryfikacje czy nie osiagnely one pozycji zabronionych
+Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py. Węzeł **join_state_publisher** odpowiadał za obsługę stawów robota, przy pomocy parametrów mogliśmy w czasie rzeczywistym zmieniać pozycje poszcczególnych elementów robota. Węzeł ten był odpowiedzialny również za sprawdzani, czy parametry które próbujemy zadać nie są błędne.
 
+### 3. Sposób działania
+
+Węzeł _non_kdl_dkin.py_ rozwiązuje problem połorzenia końcówki w sposób analityczny. Wyznacza on macierze wszystkich stawó robota, a następnie przemnaża je. Z ostatecznej macierzy możemy wyczyctać potrzebne nam informacje, które przekształcając w odpowiedni sposób dają nam połorzenie końcówki.
+
+Węzeł _kdl_dkin.py_ działa w bardzo podobny sposób, jednak dzięki modułowi PyKDL wykonuje on wszystko automatycznie.
+
+### 4. Sposób uruchamienia
 
 Zostały stworzone cztery pliki _launch_:
-* non_kdl_dkin.launch.py
-* kdl_dkin.launch.py
-* both_kdl_and_non_kdl_dkin.launch.py
+* non_kdl_dkin.launch.py - odpala węzeł nie używający modułu PyKDL
+* kdl_dkin.launch.py - odpala węzeł używający modułu PyKDL
 * rviz.launch.py - odpala program wizualizacyjny
 
 
 ![Alt text](rqt_graph.png?raw=true "RQT - graph")
 
-Ostatecznie powiązanie pomiędzy węzłami wygląda jak na powyższym rysunku. _state_publisher_ nadaje na kanale komunikacyjnym 'JointState', które odbiera węzeł _robot_state_publisher_. Tez z koleji na kanale nadaje na kanale 'tf', który odbiera węzeł programu RVIZ.
+W pierwszej kolejności budujemy nasz pakiet przy użyciu komendy:
 
-
-### 3. Uruchomienie
-
-Najpierw należy stworzyć odpowiedni plik .urdf. Następnie umieścić go w pakiecie. Następnie budujemy nasz pakiet przy użyciu komendy:
-
-`colcon build --symlink-install --packages-select urdf_tutorial`
+`colcon build --symlink-install --packages-select zadanie3`
 
 Kolejno należy użyć komendy określajcej źródło:
 
 `source install/setup.bash`
 
-Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejnych węzłów naszej symulacji:
 
-`ros2 launch urdf_tutorial demo.launch.py`
+Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejnych węzłów naszej symulacji. Przy pomocy komendy _ros2 launch zadanie3 **nazwa pliku launch**_ możemy uruchomić potrzebne nam węzły i programy. Najlepiej odpalić wszystkie pliki launch w 3 różnych terminalach, dzieki temu będziemy mieli pełen wgląd na sytuację. Jednocześnie uruchomimy program RVIZ.
 
-Plik _launch_ uruchomi węzeł _state_publisher_.
+Zmieniając wartości parametrów przy pomocy komendy:
 
-W kolejnej konsoli wpisujemy komędę określającą źródło (wyżej podana), a następnie uruchomić kolejny plik launch:
+_ros2 param set /join_state_publisher poz* "wartość"_
 
-`ros2 launch urdf_tutorial rviz.launch.py`
-
-Uruchomi on program RVIZ. W zależności od tego jaki program użyjemy do stworzenia pliku .urdf robot będzie się poruszał lub będzie statyczny.
+**poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
 
 
