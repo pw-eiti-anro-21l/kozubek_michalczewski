@@ -24,7 +24,6 @@ Zostały stworzone cztery pliki _launch_:
 * rviz.launch.py - odpala program wizualizacyjny
 
 
-![Alt text](rqt_graph.png?raw=true "RQT - graph")
 
 W pierwszej kolejności budujemy nasz pakiet przy użyciu komendy:
 
@@ -43,7 +42,8 @@ _ros2 param set /join_state_publisher poz* "wartość"_
 
 **poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
-
+Robot:
+![Alt text](rqt_graph.png?raw=true "RQT - graph")
 
 
 ###Członkowie zespołu:
