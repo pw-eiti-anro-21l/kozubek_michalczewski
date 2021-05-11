@@ -1,9 +1,0 @@
-source;share/zadanie3/hook/pythonpath.ps1
-source;share/zadanie3/hook/pythonpath.dsv
-source;share/zadanie3/hook/pythonpath.sh
-source;share/zadanie3/hook/ament_prefix_path.ps1
-source;share/zadanie3/hook/ament_prefix_path.dsv
-source;share/zadanie3/hook/ament_prefix_path.sh
-source;../../build/zadanie3/share/zadanie3/hook/pythonpath_develop.ps1
-source;../../build/zadanie3/share/zadanie3/hook/pythonpath_develop.dsv
-source;../../build/zadanie3/share/zadanie3/hook/pythonpath_develop.sh

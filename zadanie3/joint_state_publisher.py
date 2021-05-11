@@ -36,7 +36,7 @@ class StatePublisher(Node):
         self.odom_trans.child_frame_id = 'baza'
         self.joint_state = JointState()
 
-        self.timer = self.create_timer(0.1, self.update_state)
+        self.timer = self.create_timer(0.02, self.update_state)
 
     def update_state(self):
 
@@ -52,6 +52,8 @@ class StatePublisher(Node):
             # send the joint state and transform
             self.joint_pub.publish(self.joint_state)
             self.broadcaster.sendTransform(self.odom_trans)
+
+            self.poz1 += 0.05
 
             # This will adjust as needed per iteration
 
@@ -76,37 +78,37 @@ class StatePublisher(Node):
                 self.poz1 = 3.14
                 self.set_parameters([rclpy.parameter.Parameter('poz1', rclpy.Parameter.Type.DOUBLE, 3.14)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz1' set to value: " + str(self.poz1))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz1))
 
             if self.poz1 < -3.14:
                 self.poz1 = -3.14
                 self.set_parameters([rclpy.parameter.Parameter('poz1', rclpy.Parameter.Type.DOUBLE, -3.14)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz1' set to value: " + str(self.poz1))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz1))
 
             if self.poz2 > 2.6:
                 self.poz2 = 2.6
                 self.set_parameters([rclpy.parameter.Parameter('poz2', rclpy.Parameter.Type.DOUBLE, 2.6)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz2' set to value: " + str(self.poz2))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz2))
 
             if self.poz2 < -2.6:
                 self.poz2 = -2.6
                 self.set_parameters([rclpy.parameter.Parameter('poz2', rclpy.Parameter.Type.DOUBLE, -2.6)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz2' set to value: " + str(self.poz2))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz2))
 
             if self.poz3 > 0.1:
                 self.poz3 = 0.1
                 self.set_parameters([rclpy.parameter.Parameter('poz3', rclpy.Parameter.Type.DOUBLE, 0.1)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz3' set to value: " + str(self.poz3))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz3))
 
             if self.poz3 < -0.5:
                 self.poz3 = -0.5
                 self.set_parameters([rclpy.parameter.Parameter('poz3', rclpy.Parameter.Type.DOUBLE, -0.5)])
                 self.get_logger().error(
-                    "Reached limit of joint position! Parameter 'poz3' set to value: " + str(self.poz3))
+                    "Osiągnięto limit! Parametr 'poz1' ustawiono: " + str(self.poz3))
 
         except KeyboardInterrupt:
             pass

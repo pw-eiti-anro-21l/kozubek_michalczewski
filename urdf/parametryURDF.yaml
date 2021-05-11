@@ -1,27 +1,27 @@
 baza:
-  length: 1
+  length: 1.5
   radius: 0.3
   roll: 0
   pitch: 0
   yaw: 0
 ramie1:
-  x: 0.5
-  y: 0.1
-  z: 0.1
+  x: 1.0
+  y: 0.15
+  z: 0.15
   roll: 0
   pitch: 0
   yaw: 0
 ramie2:
   x: 0.5
-  y: 0.1
-  z: 0.1
+  y: 0.09
+  z: 0.09
   roll: 0
   pitch: 0
   yaw: 0
 ramie3:
-  x: 0.05
-  y: 0.05
-  z: 0.5
+  x: 0.03
+  y: 0.03
+  z: 0.3
   roll: 0 
   pitch: 0
   yaw: 0

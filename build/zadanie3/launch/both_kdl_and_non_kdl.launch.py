@@ -1,1 +1,0 @@
-/home/przemyslaw/zadanie_3_ostatecznie/zadanie3/launch/both_kdl_and_non_kdl.launch.py
