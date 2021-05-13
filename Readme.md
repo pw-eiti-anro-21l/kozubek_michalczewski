@@ -1,4 +1,4 @@
-# Dokumentacja projektu - laboratorium 2
+# Dokumentacja projektu - laboratorium 3
 
 ### 1. Wprowadzenie
 
