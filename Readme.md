@@ -12,7 +12,7 @@ Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py. Węzeł **jo
 
 ### 3. Sposób działania
 
-Węzeł _non_kdl_dkin.py_ rozwiązuje problem połorzenia końcówki w sposób analityczny. Wyznacza on macierze wszystkich stawó robota, a następnie przemnaża je. Z ostatecznej macierzy możemy wyczyctać potrzebne nam informacje, które przekształcając w odpowiedni sposób dają nam połorzenie końcówki.
+Węzeł _non_kdl_dkin.py_ rozwiązuje problem położenia końcówki w sposób analityczny. Wyznacza on macierze wszystkich stawó robota, a następnie przemnaża je. Z ostatecznej macierzy możemy wyczyctać potrzebne nam informacje, które przekształcając w odpowiedni sposób dają nam połorzenie końcówki.
 
 Węzeł _kdl_dkin.py_ działa w bardzo podobny sposób, jednak dzięki modułowi PyKDL wykonuje on wszystko automatycznie.
 
