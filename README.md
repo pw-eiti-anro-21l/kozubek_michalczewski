@@ -2,13 +2,13 @@
 
 ### 1. Wprowadzenie
 
-Celem projektu było stworzenie własnego pakietu **ros2**, ktrego gównym celem byla obsluga kinematyki prostej. Pakiet ten miał za zadanie wyliczać pozycje końcówki robota, tak aby zadzała się z jego realnym połorzeniem.
+Celem projektu było stworzenie własnego pakietu **ros2**, którego gównym celem byla interpolacja liniowa. Pakiet ten miał za zadanie wyznaczać ruch robota, na podstawie danych przez użytkownika. Dodatkowo neleżał ozaimplementować inną interpolację, w naszym przypadku skorzystaliśmy z interpolacji wielomianem 3 stopnia. 
 
 
 ### 2. Implementacja
-Stworzono dwa węzły _non_kdl_dkin.py_ i _kdl_dkin.py_, odpowiaday one za wyliczenia pozycji końcówki "ramienia" robota. Jak nazwa wskazuje węzeł _non_kdl_ nie korzystał z dostępnego w pythonie pakiety PyKDL. Natomiast program _kdl_ używał wcześniej wspomnianego pakietu.
+Stworzono dwa węzeły _joint.py_ i _oint.py_, pierwszy z nich odpowiadał za interpolację stawów robota, drugi natomiast odpowiada za interpolację punktu w przestrzeni 3D. Wewnątrz programu są obliczane wszystkie potrzebne parametry.
 
-Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py. Węzeł **joint_state_publisher** odpowiadał za obsługę stawów robota, przy pomocy parametrów mogliśmy w czasie rzeczywistym zmieniać pozycje poszcczególnych elementów robota. Węzeł ten był odpowiedzialny również za sprawdzani, czy parametry które próbujemy zadać nie są błędne.
+
 
 ### 3. Sposób działania
 
