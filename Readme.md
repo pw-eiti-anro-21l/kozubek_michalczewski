@@ -42,9 +42,14 @@ _ros2 param set /join_state_publisher poz* "wartość"_
 
 **poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
-Robot:
+Poglądowy zdjęcie robota:
+
+
 ![Robotimage](robot.png)
 
+Obrazek demonstrujący połączenia węzłów:
+
+![Węzły](rqt_graph.png)
 
 ###Członkowie zespołu:
 
