@@ -43,7 +43,7 @@ _ros2 param set /join_state_publisher poz* "wartość"_
 **poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
 Robot:
-![Alt text](rqt_graph.png?raw=true "RQT - graph")
+![Robotimage](robot.png)
 
 
 ###Członkowie zespołu:
