@@ -1,0 +1,82 @@
+<robot name="robot">
+
+      <material name="grey">
+                    <color rgba="0.643 0.643 0.6117 1"/>
+      </material>
+      
+        <material name="sea">
+                    <color rgba="0.298 0.8 0.882 1"/>
+      </material>
+
+  <material name="yelow">
+                    <color rgba="0.949 0.9608 0.396 1"/>
+      </material>
+
+
+   
+    <link name="baza">
+            <visual>
+                <geometry>
+                    <box size="0.3 0.3 1.5 "/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0.75"/>
+                <material name="grey"/>
+            </visual>
+    </link>
+
+    <link name="ramie1">
+            <visual>
+                <geometry>
+                    <box size="1.0 0.15 0.15"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0.5 0 0.075"/>
+                <material name="sea"/>
+            </visual>
+    </link>
+
+    <joint name="baza_do_ramie1" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit upper="-3.14" lower="3.14" effort="10" velocity="3" />
+        <parent link="baza"/>
+        <child link="ramie1"/>
+        <origin xyz="0 0 1.5" rpy="0 0 0"/>
+    </joint>
+
+    <link name="ramie2">
+            <visual>
+                <geometry>
+                    <box size="0.5 0.09 0.09"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0.25 0 0.045"/>
+                <material name="yelow"/>
+
+            </visual>
+    </link>
+
+    <joint name="ramie1_do_ramie2" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit upper="2.6" lower="-2.6" effort="10" velocity="3" />
+        <parent link="ramie1"/>
+        <child link="ramie2"/>
+        <origin xyz="1 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="ramie3">
+        <visual>
+            <geometry>
+                    <box size="0.03 0.03 0.3"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0.015 0 -0.15"/>
+            <material name="sea"/>
+
+        </visual>
+    </link>
+
+    <joint name="ramie2_do_ramie3" type="prismatic">
+        <axis xyz="0 0 1"/>
+        <limit upper="0.1" lower="-0.5" effort="10" velocity="2" />
+        <parent link="ramie2"/>
+        <child link="ramie3"/>
+        <origin xyz="0.5 0 -0.3" rpy="-3.14 0 0"/>
+    </joint>
+</robot>
