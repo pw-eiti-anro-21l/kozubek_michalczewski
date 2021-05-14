@@ -1,8 +1,8 @@
-# Dokumentacja projektu - laboratorium 3
+# Dokumentacja projektu - laboratorium 4
 
 ### 1. Wprowadzenie
 
-Celem projektu było stworzenie własnego pakietu **ros2**, którego gównym celem byla interpolacja liniowa. Pakiet ten miał za zadanie wyznaczać ruch robota, na podstawie danych przez użytkownika. Dodatkowo neleżał ozaimplementować inną interpolację, w naszym przypadku skorzystaliśmy z interpolacji wielomianem 3 stopnia. 
+Celem projektu było stworzenie własnego pakietu **ros2**, którego gównym celem byla interpolacja liniowa. Pakiet ten miał za zadanie wyznaczać ruch robota, na podstawie danych przez użytkownika. Dodatkowo neleżał zaimplementować inną interpolację, w naszym przypadku skorzystaliśmy z interpolacji wielomianem 3 stopnia. 
 
 
 ### 2. Implementacja
@@ -12,44 +12,48 @@ Stworzono dwa węzeły _joint.py_ i _oint.py_, pierwszy z nich odpowiadał za in
 
 ### 3. Sposób działania
 
-Węzeł _non_kdl_dkin.py_ rozwiązuje problem położenia końcówki w sposób analityczny. Wyznacza on macierze wszystkich stawó robota, a następnie przemnaża je. Z ostatecznej macierzy możemy wyczyctać potrzebne nam informacje, które przekształcając w odpowiedni sposób dają nam połorzenie końcówki.
+Węzeł _joint.py_ działa w prosty sposób. Po podaniu mu pozycji końcowych odpowiednich stawów węzeł interpoluje zadaną trasę stawów w podany sposób (liniowy lub wielomianem 3 stopnia)
 
-Węzeł _kdl_dkin.py_ działa w bardzo podobny sposób, jednak dzięki modułowi PyKDL wykonuje on wszystko automatycznie.
+Węzeł _oint.py_ działa w bardzo podobny sposób, jednak zajmuje się on interpolacją punktu w przestrzeni 3D. Zajmuję się on zmianą pozycji oraz rotacji jednocześnie.
 
 ### 4. Sposób uruchamienia
 
-Zostały stworzone cztery pliki _launch_:
-* non_kdl_dkin.launch.py - odpala węzeł nie używający modułu PyKDL
-* kdl_dkin.launch.py - odpala węzeł używający modułu PyKDL
+Zostały stworzone trzy pliki _launch_:
+* jnit.launch.py - odpala węzeł interpolujący ruch robota
+* oint.launch.py - odpala węzeł interpolujący ruch punktuL
 * rviz.launch.py - odpala program wizualizacyjny
 
 
 
 W pierwszej kolejności budujemy nasz pakiet przy użyciu komendy:
 
-`colcon build --symlink-install --packages-select zadanie3`
+`colcon build`
 
 Kolejno należy użyć komendy określajcej źródło:
 
 `source install/setup.bash`
 
 
-Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejnych węzłów naszej symulacji. Przy pomocy komendy _ros2 launch zadanie3 **nazwa pliku launch**_ możemy uruchomić potrzebne nam węzły i programy. Najlepiej odpalić wszystkie pliki launch w 3 różnych terminalach, dzieki temu będziemy mieli pełen wgląd na sytuację. Jednocześnie uruchomimy program RVIZ.
+Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejnych węzłów naszej symulacji. Przy pomocy komendy _ros2 launch zadanie4 **nazwa pliku launch**_ możemy uruchomić potrzebne nam węzły i programy. Najlepiej odpalić pliki launch pojedyńczo w różnych terminalach, dzieki temu będziemy mieli pełen wgląd na sytuację. Jednocześnie uruchomimy program RVIZ.
 
-Zmieniając wartości parametrów przy pomocy komendy:
+Przy pomocy komendy:
 
-_ros2 param set /join_state_publisher poz* "wartość"_
+_ros2 service call /interpolation_params zadanie4_srv/srv/JintControlSrv "{newpoz1: 1.0, newpoz2: 1.0, newpoz3: -0.2, time: 5.0, interpolation: linear}"_
 
-**poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
-Poglądowy zdjęcie robota:
+Aby zinterpolować ruch punktu należy wprowadzić komendę:
 
+
+_ros2 service call /interpolation_params zadanie4_srv/srv/JintControlSrv "{newpoz1: 1.0, newpoz2: 1.0, newpoz3: -0.2, time: 5.0, interpolation: linear}"_
+
+
+Obrazek demostrujący ruch robota
 
 ![Robotimage](robot.png)
 
-Obrazek demonstrujący połączenia węzłów:
+Obrazek demonstrujący ruch punktu:
 
-![Węzły](rqt_graph.png)
+![Punkt](punkt.png)
 
 ###Członkowie zespołu:
 
