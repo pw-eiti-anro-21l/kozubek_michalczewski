@@ -44,7 +44,7 @@ _ros2 service call /interpolation_params zadanie4_srv/srv/JintControlSrv "{newpo
 Aby zinterpolować ruch punktu należy wprowadzić komendę:
 
 
-_ros2 service call /interpolation_params zadanie4_srv/srv/JintControlSrv "{newpoz1: 1.0, newpoz2: 1.0, newpoz3: -0.2, time: 5.0, interpolation: linear}"_
+_ros2 service call /interpolation_params_oint zadanie4_oint_srv/src/OintControlSrv "{newx: 0.0, newy: 0.0, newz: 0.0, newroll: 0.0, newpitch: 0.0, newyaw: 0.0, time: 5.0, interpolation: spline}"_
 
 
 Obrazek demostrujący ruch robota
