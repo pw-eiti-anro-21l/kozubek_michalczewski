@@ -8,7 +8,7 @@ Celem projektu było stworzenie własnego pakietu **ros2**, ktrego gównym celem
 ### 2. Implementacja
 Stworzono dwa węzły _non_kdl_dkin.py_ i _kdl_dkin.py_, odpowiaday one za wyliczenia pozycji końcówki "ramienia" robota. Jak nazwa wskazuje węzeł _non_kdl_ nie korzystał z dostępnego w pythonie pakiety PyKDL. Natomiast program _kdl_ używał wcześniej wspomnianego pakietu.
 
-Zostaly rowniez wprowadzone zmiany w pliku join_state_publisher.py. Węzeł **joint_state_publisher** odpowiadał za obsługę stawów robota, przy pomocy parametrów mogliśmy w czasie rzeczywistym zmieniać pozycje poszcczególnych elementów robota. Węzeł ten był odpowiedzialny również za sprawdzani, czy parametry które próbujemy zadać nie są błędne.
+Zostaly rowniez wprowadzone zmiany w pliku joint_state_publisher.py. Węzeł **joint_state_publisher** odpowiadał za obsługę stawów robota, przy pomocy parametrów mogliśmy w czasie rzeczywistym zmieniać pozycje poszcczególnych elementów robota. Węzeł ten był odpowiedzialny również za sprawdzani, czy parametry które próbujemy zadać nie są błędne.
 
 ### 3. Sposób działania
 
@@ -38,7 +38,7 @@ Gdy nasz pakiet jest poprawnie zbudowany możemy przejść do uruchmienie kolejn
 
 Zmieniając wartości parametrów przy pomocy komendy:
 
-_ros2 param set /join_state_publisher poz* "wartość"_
+_ros2 param set /joint_state_publisher poz* "wartość"_
 
 **poz1, poz2, poz3** - położenia odpowiednich stawów robota.
 
