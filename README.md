@@ -23,18 +23,21 @@ Robot został zaprojektowany w taki sposób, że pierwsze oraz drugie ramie odpo
 #### Pozycja x,y
 korzystając z macierzy transformacji odpowiednich ramion oraz wykorzystując zmienną pomocniczą β jako kąt ramienia 2 od osi x ( a nie od ramienia 1) mamy
 *Ramie1:
+
 ![Ramie1](T1.png)
 
 *Ramie2:
+
 ![Ramie2](T2.png)
 
 Po wymnożenieu otrzymujemy:
+
 ![T3](T3.png)
 
 Ponieważ nie interesuje nas obrót końcówki robota wystarczy porównać tylko wektor translacji z znanym wektorem współrzędnych
 
 ![T4](T4.png)
-[T4](T4.png)
+[T5](T5.png)
 
 
 ### 5. Sposób uruchamienia
