@@ -19,20 +19,14 @@ class Oint(Node):
     def __init__(self):
         rclpy.init()
         super().__init__('oint')
-
-        # message declarations
         self.odom_trans = TransformStamped()
         self.odom_trans.header.frame_id = 'odom'
         self.odom_trans.child_frame_id = 'baza'
         self.pose_stamped = PoseStamped()
         self.oint_path = Path()
-
-        # robot state parameters
         self.x = 1.0
         self.y = 0.0
         self.z = 1.3
-
-        # interpolation parameters
         self.target_time = 0.0
         self.time = 1.0
         self.figure = ""
@@ -42,16 +36,12 @@ class Oint(Node):
         self.newx = 1.0
         self.newy = 0.0
         self.newz = 1.3
-
         self.a = 0.4
         self.b = 0.2
         self.interpolation_method = ""
         self.time_period = 0.05
         self.time_passed = 0.0
-
-
         self.result = False
-
         qos_profile = QoSProfile(depth=10)
         self.oint_pub = self.create_publisher(PoseStamped, 'pose_stamped_oint', qos_profile)
         self.path_pub = self.create_publisher(Path, 'path_poses', qos_profile)
@@ -62,26 +52,21 @@ class Oint(Node):
 
         publsh_thread = threading.Thread(target=self.publish_state)
         publsh_thread.start()
-
     def interpolation_params_callback(self, request, response):
-
         self.time = 2
         self.oldx = self.x
         self.oldy = self.y
         self.oldz = self.z
-        
         self.newx = self.x
         self.newy = self.y
         self.newz = self.z
-        
         self.interpolation_method = "linear"
         self.time_passed = 0.0
         self.result = False
         self.figure = request.figure
-
-        thread = threading.Thread(target=self.update_state)  # create update_state loop on a different thread
-        thread.start()  # start thread
-        thread.join()  # wait for the thread to stop
+        thread = threading.Thread(target=self.update_state)
+        thread.start()
+        thread.join()
 
         self.draw_shape()
         return response
@@ -106,8 +91,6 @@ class Oint(Node):
             except KeyboardInterrupt:
                 exit(0)
 
-
-
     def draw_rectangle(self, a, b, ab, time):
         self.newx = self.x + a
         self.newz = self.z + b
@@ -116,7 +99,6 @@ class Oint(Node):
             flaga = -1
         else:
             flaga = 1
-
         self.target_time = time * 0.5 * ((a + b) / ab) * flaga
         self.oldx = self.x
         self.oldy = self.y
@@ -205,17 +187,11 @@ class Oint(Node):
             self.time_passed += self.time_period
 
 
-
-
-# method to count linear interpolated position for given current time
 def interpolate_linear(x0, x1, t0, t1, time_passed):
     return x0 + ((x1 - x0) / (t1 - t0)) * (time_passed - t0)
 
-
-# method to interpolate with given method
 def interpolate(x0, x1, t0, t1, time_passed, method):
-    if method == "linear":
-        return interpolate_linear(x0, x1, t0, t1, time_passed)
+    return interpolate_linear(x0, x1, t0, t1, time_passed)
 
 
 
