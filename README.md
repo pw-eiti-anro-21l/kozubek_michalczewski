@@ -16,7 +16,18 @@ Węzeł _ikin.py_ działa w prosty sposób. Po podaniu mu pozycji koncówki robo
 
 Węzeł _oint.py_ natomiast zadaje kolejne punkty i publikuje je na węzeł ikin.
 
-### 4. Sposób uruchamienia
+### 4. Wyliczanie kinematyki odwrotnej
+
+Robot został zaprojektowany w taki sposób, że pierwsze oraz drugie ramie odpowiadają wyłącznie za pozycję **x**, **y** końcówki, natomiast 3 ramie odpowiada wyłącznie za pozycję **z** końcówki. Dzięki temu możemuy rozbić problem na 2 mniejsze problemy.
+
+#### Pozycja x,y
+korzystając
+\begin{array}{cc} 
+0.8944272 & 0.4472136\\
+-0.4472136 & -0.8944272
+\end{array}
+
+### 5. Sposób uruchamienia
 
 Zostały stworzone trzy pliki _launch_:
 * ikin.launch.py - odpala węzeł rozwiązujący kinematykę odwrotną
