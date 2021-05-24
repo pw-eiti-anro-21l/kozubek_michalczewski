@@ -47,7 +47,17 @@ Korzystając z dostępnych narzędzi jesteśmy w stanie wyznaczyć poczszczegól
 
 α = ![A](A.png)
 
-Co po prostym podstawieniu kończy nasz problem kinematyki odwrotnej
+#### Pozycja z
+
+Pozycję 3 ramienia można wyznaczyć w bardzo prosty sposób, ponieważ on jako jedyny ma wpływ na zmienną z końcówki.
+
+Pozcja3 = h - d3 - z
+
+Gdzie 
+* h - wysokość podstawy robota
+* d3 - długość trzeciego ramienia robota 
+
+Co kończy nasz problem kinematyki odwrotnej.
 
 ### 5. Sposób uruchamienia
 
