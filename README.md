@@ -35,7 +35,7 @@ Po wymnożenieu otrzymujemy:
 
 ![T3](T3.png)
 
-Ponieważ nie interesuje nas obrót końcówki robota wystarczy porównać tylko wektor translacji z znanym wektorem współrzędnych
+Ponieważ nie interesuje nas obrót końcówki robota wystarczy porównać tylko wektor translacji ze znanym wektorem współrzędnych
 
 ![T4](T4.png) = 
 ![T5](T5.png)
