@@ -23,11 +23,11 @@ Robot został zaprojektowany w taki sposób, że pierwsze oraz drugie ramie odpo
 #### Pozycja x,y
 korzystając z macierzy transformacji odpowiednich ramion oraz wykorzystując zmienną pomocniczą β jako kąt ramienia 2 od osi x ( a nie od ramienia 1) mamy
 
-* Ramie1:
+* Ramie1 (a - długość ramienia 1):
 
 ![Ramie1](T1.png)
 
-* Ramie2:
+* Ramie2 (b - długość ramienia 2):
 
 ![Ramie2](T2.png)
 
@@ -37,9 +37,17 @@ Po wymnożenieu otrzymujemy:
 
 Ponieważ nie interesuje nas obrót końcówki robota wystarczy porównać tylko wektor translacji z znanym wektorem współrzędnych
 
-![T4](T4.png)
+![T4](T4.png) = 
 ![T5](T5.png)
 
+Korzystając z dostępnych narzędzi jesteśmy w stanie wyznaczyć poczszczególne kąty jako:
+
+
+β = ![B](B.png)
+
+α = ![A](A.png)
+
+Co po prostym podstawieniu kończy nasz problem kinematyki odwrotnej
 
 ### 5. Sposób uruchamienia
 
