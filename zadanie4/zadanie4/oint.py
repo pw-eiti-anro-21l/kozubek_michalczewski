@@ -194,7 +194,6 @@ def interpolate(x0, x1, t0, t1, time_passed, method):
     return interpolate_linear(x0, x1, t0, t1, time_passed)
 
 
-
 def main():
     node = Oint()
     rclpy.spin(node)
