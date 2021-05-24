@@ -21,10 +21,22 @@ Węzeł _oint.py_ natomiast zadaje kolejne punkty i publikuje je na węzeł ikin
 Robot został zaprojektowany w taki sposób, że pierwsze oraz drugie ramie odpowiadają wyłącznie za pozycję **x**, **y** końcówki, natomiast 3 ramie odpowiada wyłącznie za pozycję **z** końcówki. Dzięki temu możemuy rozbić problem na 2 mniejsze problemy.
 
 #### Pozycja x,y
-korzystając z macierzy transformacji odpowiednich ramion mamy
-|c(α) -s(α) d\*c(α)|
-|s(α) c(α) d\*s(α)|
-|0 0 1|
+korzystając z macierzy transformacji odpowiednich ramion oraz wykorzystując zmienną pomocniczą β jako kąt ramienia 2 od osi x ( a nie od ramienia 1) mamy
+*Ramie1:
+![Ramie1](T1.png)
+
+*Ramie2:
+![Ramie2](T2.png)
+
+Po wymnożenieu otrzymujemy:
+![T3](T3.png)
+
+Ponieważ nie interesuje nas obrót końcówki robota wystarczy porównać tylko wektor translacji z znanym wektorem współrzędnych
+
+![T4](T4.png)
+[T4](T4.png)
+
+
 ### 5. Sposób uruchamienia
 
 Zostały stworzone trzy pliki _launch_:
