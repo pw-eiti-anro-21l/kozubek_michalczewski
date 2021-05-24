@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(zadanie4_srv)
+project(zadanie5_ikin_srv)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -19,7 +19,7 @@ endif()
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/JintControlSrv.srv"
+  "srv/IkinControlSrv.srv"
  )
 
 # find dependencies

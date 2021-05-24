@@ -7,14 +7,10 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false') 
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     urdf_file_name = 'robot.urdf.xml'
     urdf = os.path.join(get_package_share_directory('zadanie4'), urdf_file_name)
 
-    x = 0.0
-    y = 0.0
-    z = 0.0
- 
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -22,7 +18,7 @@ def generate_launch_description():
             default_value='false',
             description='Use simulation (Gazebo) clock if true'),
         
-        Node(
+	Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
@@ -34,12 +30,9 @@ def generate_launch_description():
 
         Node(
             package='zadanie4',
-            executable='oint',
-            name='oint',
+            executable='ikin',
+            name='ikin',
             parameters=[{
-                'x': x,
-                'y': y,
-                'z': z,
                 'use_sim_time': use_sim_time,
             }],
             output='screen'),

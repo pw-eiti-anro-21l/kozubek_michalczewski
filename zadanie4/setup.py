@@ -29,7 +29,8 @@ setup(
             'nie_kdl = zadanie4.nie_kdl:main',
             'kdl = zadanie4.kdl:main',
             'jint = zadanie4.jint:main',
-            'oint = zadanie4.oint:main'
+            'oint = zadanie4.oint:main',
+            'ikin = zadanie4.ikin:main'
         ],
     },
 )

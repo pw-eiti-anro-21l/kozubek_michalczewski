@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>zadanie4_srv</name>
+  <name>zadanie5_ikin_srv</name>
   <version>0.0.0</version>
-  <description>Service for zadanie4</description>
+  <description>Serwis ikin</description>
   <maintainer email="przemyslaw@student.com">przemyslaw</maintainer>
   <license>Apache Licnse 2.0</license>
 
@@ -19,4 +19,4 @@
   <export>
     <build_type>ament_cmake</build_type>
   </export>
-  </package>
+</package>

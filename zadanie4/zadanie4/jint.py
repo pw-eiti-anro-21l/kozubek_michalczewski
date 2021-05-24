@@ -26,7 +26,7 @@ class Jint(Node):
         self.nodeName = self.get_name()
         self.get_logger().info("{0} started".format(self.nodeName))
 
-        # robot state parameters
+        # parametry robota
         self.declare_parameter('poz1', 0.0)
         self.declare_parameter('poz2', 0.0)
         self.declare_parameter('poz3', 0.0)
@@ -34,7 +34,7 @@ class Jint(Node):
         self.poz2 = self.get_parameter('poz2').get_parameter_value().double_value
         self.poz3 = self.get_parameter('poz3').get_parameter_value().double_value
 
-        # interpolation parameters
+        # parametry interpolacji
         self.target_time = 0.0
         self.oldpoz1 = self.poz1
         self.oldpoz2 = self.poz2
@@ -48,10 +48,9 @@ class Jint(Node):
         self.max_error = 0.05
         self.err_poz = [0.0, 0.0, 0.0]
 
-        # threading
         self.result = False
 
-        # message declarations
+        # deklaracja widomości
         self.odom_trans = TransformStamped()
         self.odom_trans.header.frame_id = 'odom'
         self.odom_trans.child_frame_id = 'baza'
@@ -84,9 +83,9 @@ class Jint(Node):
             self.time_passed = 0.0
             self.result = False
 
-            thread = threading.Thread(target=self.update_state)  # create update_state loop on a different thread
-            thread.start()  # start thread
-            thread.join()  # wait for the thread to stop
+            thread = threading.Thread(target=self.update_state)  # tworzy pętlę
+            thread.start()  # start 
+            thread.join()  # czeka na stop
 
             if self.result:
                 response.operation = "Iterpolacja zakonczona sukcesem"
@@ -98,18 +97,16 @@ class Jint(Node):
 
         return response
 
-    # method to publish new state even if not changing (to keep connection with rviz)
+    # funkcja zadająca pozycję dla RVIZ
     def publish_state(self):
         while True:
             try:
-                # update joint_state
                 now = self.get_clock().now()
                 self.joint_state.header.stamp = now.to_msg()
                 self.joint_state.name = ["baza_do_ramie1", "ramie1_do_ramie2", "ramie2_do_ramie3"]
                 self.joint_state.position = [self.poz1, self.poz2, self.poz3]
                 self.odom_trans.header.stamp = now.to_msg()
 
-                # send the joint state and transform
                 self.joint_pub.publish(self.joint_state)
                 self.broadcaster.sendTransform(self.odom_trans)
                 time.sleep(self.time_period)
